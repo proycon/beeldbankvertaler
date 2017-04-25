@@ -62,7 +62,7 @@ if __name__ == '__main__':
                     if annotation['id'] in translations:
                         annotation['caption_nl'] = translations[annotation['id']]
                     else:
-                        print("WARNING: No translation for " + annotation['id'] + " !!",file=sys.stderr)
+                        print("WARNING: No translation for " + str(annotation['id']) + " !!",file=sys.stderr)
 
             with open(basename + '.translated.json','w',encoding='utf-8') as jsonout:
                 json.dump(data, jsonout)
