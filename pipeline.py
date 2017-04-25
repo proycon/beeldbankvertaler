@@ -32,7 +32,7 @@ if __name__ == '__main__':
     for jsonfilename in args.inputfiles:
         basename = os.path.basename(jsonfilename).replace('.json','')
         print("Loading " + basename + " ...",file=sys.stderr)
-        data = json.load(open(jsonfilename,'rb'))
+        data = json.load(open(jsonfilename,'r',encoding='utf-8'))
 
         if not os.path.exists(basename+'.txt') or not os.path.exists(basename+'.idx'):
             print("Extracting data from " + basename + " ...",file=sys.stderr)
@@ -64,5 +64,5 @@ if __name__ == '__main__':
                     else:
                         print("WARNING: No translation for " + annotation['id'] + " !!",file=sys.stderr)
 
-            with open(basename + '.translated.json','wb') as jsonout:
+            with open(basename + '.translated.json','w',encoding='utf-8') as jsonout:
                 json.dump(data, jsonout)
